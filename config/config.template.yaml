@@ -1,0 +1,77 @@
+data_loader:
+  change_team:
+    batch_size: XXX
+    data_path: XXX
+    input_dim: XXX
+    output_dim: XXX
+  simple:
+    batch_size: XXX
+    data_path: XXX
+    len_seq_pred: XXX
+    len_seq_train: XXX
+    output_dim: XXX
+directory:
+  project_dir: XXX
+mode: XXX
+models:
+  position:
+    embeded:
+      EVENT_EMBEDED_OUTPUT: XXX
+      EVENT_EMBEDED_SIZE: XXX
+      LSTM_SIZE_1: XXX
+      LSTM_SIZE_2: XXX
+      POSITION_EMBEDED_OUTPUT: XXX
+      POSITION_EMBEDED_SIZE: XXX
+      ZONE_EMBEDED_OUTPUT: XXX
+      ZONE_EMBEDED_SIZE: XXX
+      data_loader: XXX
+      model_name: XXX
+      save_directory: XXX
+    embeded_bi:
+      EVENT_EMBEDED_OUTPUT: XXX
+      EVENT_EMBEDED_SIZE: XXX
+      LSTM_SIZE_1: XXX
+      LSTM_SIZE_2: XXX
+      POSITION_EMBEDED_OUTPUT: XXX
+      POSITION_EMBEDED_SIZE: XXX
+      ZONE_EMBEDED_OUTPUT: XXX
+      ZONE_EMBEDED_SIZE: XXX
+      data_loader: XXX
+      model_name: XXX
+      save_directory: XXX
+    events:
+      LSTM_SIZE_1: XXX
+      LSTM_SIZE_2: XXX
+      data_loader: XXX
+      model_name: XXX
+      save_directory: XXX
+  teams:
+    change_1:
+      EVENT_EMBEDED_OUTPUT: XXX
+      EVENT_EMBEDED_SIZE: XXX
+      LSTM_SIZE_1: XXX
+      LSTM_SIZE_2: XXX
+      POSITION_EMBEDED_OUTPUT: XXX
+      POSITION_EMBEDED_SIZE: XXX
+      ZONE_EMBEDED_OUTPUT: XXX
+      ZONE_EMBEDED_SIZE: XXX
+      data_loader: XXX
+      model_name: XXX
+      save_directory: XXX
+    change_2:
+      data_loader: XXX
+      model_name: XXX
+      save_directory: XXX
+trainer:
+  classic:
+    callbacks:
+      csv_logger:
+        append: XXX
+    epochs: XXX
+    initial_epoch: XXX
+    steps_per_epoch: XXX
+    use_multiprocessing: XXX
+    validation_steps: XXX
+    verbose: XXX
+    workers: XXX
+version: XXX

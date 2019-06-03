@@ -1,0 +1,81 @@
+version: 1
+mode: ${MODE}
+directory:
+  project_dir: ${PROJECT_DIR}
+data_loader:
+  simple:
+    data_path: ${PROJECT_DIR}/data/processed/games_train.csv
+    len_seq_train: 50
+    len_seq_pred: 1
+    output_dim: 2
+    batch_size: 128
+  change_team:
+    data_path: ${PROJECT_DIR}/data/processed/games_possesion_reduit_train.csv
+    input_dim: 55
+    output_dim: 1
+    batch_size: 128
+
+trainer:
+  classic:
+    epochs: 1
+    verbose: True
+    initial_epoch: 0
+    workers: 1
+    use_multiprocessing: False
+    steps_per_epoch: 50
+    epochs: 400
+    validation_steps: 20
+    callbacks:
+      csv_logger:
+        append: True
+models:
+  position:
+    embeded:
+      save_directory: ${PROJECT_DIR}/models/position_embeded
+      data_loader: simple
+      model_name: embeded_4
+      LSTM_SIZE_1: 300
+      LSTM_SIZE_2: 100
+      POSITION_EMBEDED_SIZE: 12 
+      EVENT_EMBEDED_SIZE: 25
+      ZONE_EMBEDED_SIZE: 16
+      POSITION_EMBEDED_OUTPUT: 3
+      EVENT_EMBEDED_OUTPUT: 5
+      ZONE_EMBEDED_OUTPUT: 3
+    embeded_bi:
+      save_directory: ${PROJECT_DIR}/models/position_embeded_bi
+      data_loader: simple
+      model_name: embeded_bi_2
+      LSTM_SIZE_1: 300
+      LSTM_SIZE_2: 150
+      POSITION_EMBEDED_SIZE: 12 
+      EVENT_EMBEDED_SIZE: 25
+      ZONE_EMBEDED_SIZE: 16
+      POSITION_EMBEDED_OUTPUT: 3
+      EVENT_EMBEDED_OUTPUT: 5
+      ZONE_EMBEDED_OUTPUT: 3
+    events:
+      save_directory: ${PROJECT_DIR}/models/position_events
+      data_loader: simple
+      model_name: events_1
+      LSTM_SIZE_1: 300
+      LSTM_SIZE_2: 100
+  teams:
+    change_1:
+      save_directory: ${PROJECT_DIR}/models/teams_change_1
+      data_loader: simple
+      model_name: change_1
+      LSTM_SIZE_1: 300
+      LSTM_SIZE_2: 100
+      POSITION_EMBEDED_SIZE: 12 
+      EVENT_EMBEDED_SIZE: 25
+      ZONE_EMBEDED_SIZE: 16
+      POSITION_EMBEDED_OUTPUT: 3
+      EVENT_EMBEDED_OUTPUT: 10
+      ZONE_EMBEDED_OUTPUT: 3
+    change_2:
+      save_directory: ${PROJECT_DIR}/models/teams_change_2
+      data_loader: change_team
+      model_name: change_2
+
+

@@ -1,0 +1,28 @@
+version: "3"
+services:
+  jupyter:
+    image: jupyter/tensorflow-notebook:7f1482f5a136
+    container_name: jupyter-psg
+    command: start.sh jupyter lab --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.disable_check_xsrf=True
+    user: root
+    networks:
+      - netproxy
+      - default
+    volumes:
+      - "${PWD}:/home/jovyan/work"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:jupyter.psg.docker.lo"
+      - "traefik.port=8888"
+    environment:
+      - NB_GID=1001
+      - NB_UID=1001
+      - NB_USER=jovyan
+    ports:
+      - 127.0.0.1:3000:3000
+
+
+networks:
+  netproxy:
+    external:
+      name: netproxy
